@@ -4,4 +4,12 @@ from django.http import HttpResponse
 
 def top(request):
     return HttpResponse(b"hello World")
-# Create your views here.
+
+def snippet_new(request):
+    return HttpResponse('スニペットの登録')
+
+def snippet_edit(request, snippet_id):
+    return HttpResponse('スニペットの編集')
+
+def snippet_detail(request, snippet_id):
+    return HttpResponse('スニペットの詳細一覧')
