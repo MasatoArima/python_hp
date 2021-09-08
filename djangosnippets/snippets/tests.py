@@ -34,3 +34,4 @@ class TopPageRenderSnippetsTest(TestCase):
         request.user = self.user
         response = top(request)
         self.assertContains(response, self.user.username)
+
