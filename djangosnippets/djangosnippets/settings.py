@@ -31,14 +31,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'snippets.apps.SnippetsConfig',
+    'django.contrib.admin', #管理画面の機能をもつアプリケーション
+    'django.contrib.auth', #認証機能をもつアプリケーション
+    'django.contrib.contenttypes', #Content-Typeに関する機能をもつアプリケーション
+    'django.contrib.sessions', #セッション管理の機能をもつアプリケーション
+    'django.contrib.messages', #フラッシュメッセージのためのアプリケーション
+    'django.contrib.staticfiles', #静的ファイルに関連する機能をもつアプリケーション
+    'snippets.apps.SnippetsConfig', #snippetsアプリを使用するために記述
+    'accounts.apps.AccountsConfig',
     'django_bootstrap5',
+    'pygments_renderer',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +129,9 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# ユーザー認証
+#
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
