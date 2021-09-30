@@ -35,7 +35,7 @@ if not DEBUG:
     import django_heroku
     django_heroku.settings(locals())
 
-ALLOWED_HOSTS = ["nameless-retreat-88049.herokuapp.com"]
+ALLOWED_HOSTS = ["https://nameless-retreat-88049.herokuapp.com"]
 
 
 # Application definition
@@ -61,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', # 追加
 ]
 
 ROOT_URLCONF = 'djangosnippets.urls'
@@ -137,8 +138,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # 追記
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static') # 追加
 
 # 追記
 STATICFILES_DIRS = (

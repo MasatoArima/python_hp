@@ -1,1 +1,1 @@
-web: gunicorn config.wsgi --log-file -
+web: gunicorn nameless-retreat-88049.wsgi --log-file -
