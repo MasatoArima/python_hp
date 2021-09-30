@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from .local_settings import SECRET_KEY
 from pathlib import Path
-import django_heroku
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,30 +24,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-try:
-    from config.local_settings import *
-except ImportError:
-    pass
-
-if not DEBUG:
-    import django_heroku
-    django_heroku.settings(locals())
-
-ALLOWED_HOSTS = ["https://nameless-retreat-88049.herokuapp.com"]
+ALLOWED_HOSTS = [ 'nameless-retreat-88049.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin', #管理画面の機能をもつアプリケーション
-    'django.contrib.auth', #認証機能をもつアプリケーション
-    'django.contrib.contenttypes', #Content-Typeに関する機能をもつアプリケーション
-    'django.contrib.sessions', #セッション管理の機能をもつアプリケーション
-    'django.contrib.messages', #フラッシュメッセージのためのアプリケーション
-    'django.contrib.staticfiles', #静的ファイルに関連する機能をもつアプリケーション
-    'snippets.apps.SnippetsConfig', #snippetsアプリを使用するために記述
+    'django.contrib.admin',  # 管理画面の機能をもつアプリケーション
+    'django.contrib.auth',  # 認証機能をもつアプリケーション
+    'django.contrib.contenttypes',  # Content-Typeに関する機能をもつアプリケーション
+    'django.contrib.sessions',  # セッション管理の機能をもつアプリケーション
+    'django.contrib.messages',  # フラッシュメッセージのためのアプリケーション
+    'django.contrib.staticfiles',  # 静的ファイルに関連する機能をもつアプリケーション
+    'snippets.apps.SnippetsConfig',  # snippetsアプリを使用するために記述
     'accounts.apps.AccountsConfig',
     'django_bootstrap5',
     'pygments_renderer',
@@ -95,11 +86,6 @@ DATABASES = {
     }
 }
 
-import dj_database_url
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
-
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -120,13 +106,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/3.2/topics/i18n/
+# https://docs.djangoproject.com/en/dev/topics/i18n/
 
 LANGUAGE_CODE = 'ja'
-# LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Tokyo'
-# TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -136,18 +120,12 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
+# https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static') # 追加
-
-# 追記
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+# https://docs.djangoproject.com/en/dev/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -155,7 +133,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
 
-# Activate Django-Heroku.
-django_heroku.settings(locals())
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static') # 追加
