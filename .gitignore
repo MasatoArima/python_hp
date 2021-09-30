@@ -3,3 +3,4 @@ creation_procedure.html
 staticfiles
 config/local_settings.py
 db.sqlite3
+practical-django-main
