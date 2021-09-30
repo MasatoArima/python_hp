@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from .local_settings import SECRET_KEY
+from local_settings import SECRET_KEY
 from pathlib import Path
 import os
 
