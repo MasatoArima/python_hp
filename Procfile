@@ -1,1 +1,1 @@
-web: gunicorn nameless-retreat-88049.wsgi
+web: gunicorn djangosnippets.wsgi --log-file -
